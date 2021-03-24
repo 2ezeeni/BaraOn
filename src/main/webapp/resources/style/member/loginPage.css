@@ -1,0 +1,90 @@
+@charset "UTF-8";
+
+/* 초기화 */
+* {
+	padding: 0px;
+	margin: 0px;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+ul, ol {
+	list-style-type: none;
+}
+table {
+	border-collapse: collapse;
+}
+div {
+	box-sizing: border-box;
+}
+
+
+.box {
+	background: #dbdbdb;
+	height: 700px;
+	padding: 21px;
+}
+.inner-box {
+	width: 546px;
+	height: 526px;
+	background: white;
+	border-radius: 15px;
+	padding: 27px;
+	margin: 0 auto;
+}
+form {
+	width: 300px;
+	height: 466px;
+	margin: 0 auto;
+}
+form * {
+	margin: 9px;
+}
+h2 {
+	margin-bottom: 20px; 
+}
+label {
+	margin: 0px;
+}
+input[type="radio"] {
+	margin: 0px 0px 0px 11px;
+}
+.id-box, .pw-box {
+	height: 45px;
+	width: 95%;
+	border: 1px solid #dbdbdb;
+}
+.id-box > input, .pw-box > input {
+	width: 93%;
+	height: 100%;
+	line-height: 39px;
+	margin: 0 0 0 9px;
+	border: none;
+}
+a[class="login"] {
+	color: cadetblue;
+	margin: 3%;
+	font-size: 14px;
+	font-weight: bold;
+}
+input[type="button"] {
+	background: cadetblue;
+	color: white;
+	font-size: 15px;
+	font-weight: bold;
+	width: 45%;
+	height: 41px;
+	border: 1px solid cadetblue;
+	border-radius: 2px;
+	margin: 12% 27%;
+}
+.kakaoLogin {
+	width: 142px;
+	height: 83px;
+	text-align: center;
+	margin: 0 auto;
+}
+.kakaoLogin > a, .kakaoLogin > a > img {
+	margin: 0;	
+}

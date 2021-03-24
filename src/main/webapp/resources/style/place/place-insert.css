@@ -1,0 +1,167 @@
+@charset "UTF-8";
+#bottom-head div:nth-of-type(3){
+	border-bottom: 2px solid rgba(95, 158, 160, 1);
+}
+#bottom-head div:nth-of-type(3)>a{
+	color: rgba(95, 158, 160, 1);
+} 
+
+
+ul {
+	list-style-type : none;
+}
+textarea{
+	resize:none;
+	width:900px;
+}
+/* 모든 subtitle 박스 설정 */
+.subtitle {
+	font-size : 20px;
+	font-weight: 900;
+	/* width: 150px; */
+	border-bottom : 2px solid rgba(95, 158, 160, 1);
+}
+.required-data{
+	font-size : 10px;
+	color : red;
+	float:right:
+}
+.place-input{
+	width : 100%;
+	padding : 5px;
+	margin : 5px 0;
+	font-size: 18px;
+}
+/* 모든 버튼 설정 */
+button{
+	width: 150px;
+	border: 0 solid black;
+	border-radius: 10px;
+	padding: 10px 0;
+	background : rgba(95, 158, 160, 0.8);
+	cursor: pointer;
+	margin: 5px 0;
+	font-size: 12px;
+}
+button:hover{
+	background : rgba(95, 158, 160, 1);
+}
+input[type="file"]{
+	display:none;
+}
+label{
+	display : block;
+	width: 150px;
+	border: 0 solid black;
+	border-radius: 10px;
+	padding: 10px 0;
+	background : rgba(95, 158, 160, 0.8);
+	cursor: pointer;
+	margin: 5px 0;
+	font-size: 12px;
+	text-align: center;
+}
+label:hover{
+	background : rgba(95, 158, 160, 1);
+}
+
+/* body-wrap 중앙 정렬 */
+.body-wrap{
+	width: 900px;
+	margin: 0 auto;
+}
+
+
+/* 페이지 제목 */
+header.title-area {
+	text-align: center;
+}
+
+/* 카테고리 목록 */
+ul#category-list {
+	display : grid;
+	grid-template-columns : repeat(8, 110px);
+	list-style-type: none;
+	justify-content: center;
+}
+
+ul#category-list li>a {
+	display : inline-block;
+	width: 110px;
+	box-shadow: 1px 1px 0px 0px rgba(95, 158, 160, 0.8), -1px -1px 0px 0px rgba(95, 158, 160, 0.8);
+	text-align: center;
+	padding : 10px 0;;
+	font-size: 12px;
+}
+#category-list li > a:hover{
+	background: rgba(95, 158, 160, 0.5);
+}
+@media screen and (max-width:740px) {
+	.body-wrap{
+		width: 600px;
+		margin: 0 auto;
+	}
+	ul#category-list{
+		grid-template-columns : repeat(5, 100px);
+	}
+}
+
+/* 각 입력항목 */
+article.place-insert-list{
+	margin: 20px 0;
+}
+div.sub-content {
+	margin: 20px 0;
+}
+#place-addr{
+	width: 740px;
+}
+#img-box img, #option-img-box img{
+	width : 200px;
+	height : 200px;
+	
+}
+
+/* option-list */
+div.option-list{
+	margin: 0 auto;
+	width:900px;
+	display:grid;
+	grid-template-columns: repeat(3,290px);
+	gap: 10px 15px;
+}
+section.option {
+	height: auto;
+	padding: 10px;
+	border : 1px solid rgba(95, 158, 160, 0.8);
+	border-radius: 10px;
+}
+section.option input:not([type="file"]) {
+	width:100%;
+	padding : 5px;
+	margin: 10px 0;
+	font-size: 18px;
+}
+div.option-content input[type="number"]{
+	width: 80px;
+}
+ul#facility-list{
+	display: grid;
+	grid-template-columns : repeat(3, 55px);
+	gap : 10px 10px;
+	justify-content: space-between;
+}
+ul#facility-list li {
+	text-align: center;
+	border : 1px solid rgba(95, 158, 160, 0.8);
+	border-radius: 10px;
+}
+span.remove{
+	cursor: pointer;
+}
+/* section.btn-box button[id$=option-btn]{
+	width: 100%;
+	height: 300px;
+	margin-top: 20px;
+	font-size : 20px;
+} */

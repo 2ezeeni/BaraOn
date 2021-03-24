@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.baraON.dao.AdminConfirmDao">
+
+	<select id="adminConfirmList" resultType="com.koreait.baraON.dto.AdminConfirmDto">
+		SELECT B.*
+		  FROM (SELECT A.*, ROWNUM AS RN
+		          FROM (SELECT *
+		                  FROM PLACE
+		                  WHERE P_CONFIRM NOT LIKE '승인'
+		              ORDER BY S_NO DESC) A) B
+		 WHERE B.RN BETWEEN #{param1} AND #{param2}
+	</select>
+	
+	<select id="confirmCount" resultType="int">
+		SELECT COUNT(*)
+		FROM PLACE
+	</select>
+	
+	<select id="adminConfirmView" parameterType="int" resultType="com.koreait.baraON.dto.AdminConfirmDto">
+		SELECT *
+		  FROM PLACE
+		 WHERE P_NO = #{p_no}
+	</select>
+	
+	<update id="adminConfirmUpdate" parameterType="com.koreait.baraON.dto.AdminConfirmDto2">
+		UPDATE PLACE
+		   SET P_CONFIRM = #{p_confirm,jdbcType=VARCHAR},
+		   	   P_ADDR = #{p_addr,jdbcType=VARCHAR},
+		   	   P_ADDRDETAIL = #{p_addrdetail,jdbcType=VARCHAR}
+		 WHERE S_NO = #{s_no,jdbcType=INTEGER}
+	</update>
+</mapper>

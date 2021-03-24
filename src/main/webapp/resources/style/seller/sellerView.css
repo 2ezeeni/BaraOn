@@ -1,0 +1,49 @@
+@charset "UTF-8";
+* {
+	padding: 0px;
+	margin: 0px;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+ul, ol {
+	list-style-type: none;
+}
+table {
+	border-collapse: collapse;
+}
+div {
+	box-sizing: border-box;
+}
+
+.box{
+		display: inline-flex;
+}
+#myInfo{
+	width : 600px; 
+	height : 600px; 
+	font-size : 15px;
+	padding: 17px 0;
+	margin: 50px;
+}
+th{
+	width : 200px; 
+	height : 50px; 
+}
+td{
+	width : 400px; 
+	height : 50px; 
+}
+input{
+	width : 200px; 
+	height : 30px; 
+}
+
+tr:last-of-type > td {
+	text-align: center;
+}
+input[type=button]{
+	background:cadetblue;
+	color:white;
+}

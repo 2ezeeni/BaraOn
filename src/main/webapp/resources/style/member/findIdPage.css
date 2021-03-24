@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+* {
+	padding: 0px;
+	margin: 0px;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+ul, ol {
+	list-style-type: none;
+}
+table {
+	border-collapse: collapse;
+}
+div {
+	box-sizing: border-box;
+}
+
+hr[class="check"] {
+	display: block;
+}
+.resultBox {
+	width: 75%;
+	height: 96px;
+	line-height: 46px;
+	text-align: center;
+	border: 1px solid lightgray;
+	border-collapse: collapse;
+	border-radius: 3px;
+	margin: 6% auto;
+}
+input[type="button"] {
+	border: 1px solid cadetblue;
+	border-radius: 3px;
+	background: cadetblue;
+	color: white;
+	width: 30%;
+	height: 41px;
+	font-size: 15px;
+	font-weight: bold;
+}
+.login-button {
+	text-align: center;
+}

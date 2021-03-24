@@ -1,0 +1,141 @@
+@charset "UTF-8";
+
+/* 초기화 */
+* {
+	padding: 0px;
+	margin: 0px;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+ul, ol {
+	list-style-type: none;
+}
+table {
+	border-collapse: collapse;
+}
+div {
+	box-sizing: border-box;
+}
+
+.emptyList {
+	width: 400px;
+	height: 200px;
+	text-align: center;
+	margin: 40px auto;
+}
+.emptyList > div:last-of-type {
+	font-weight: bold;
+	margin-top: 26px;
+	padding: 0 0 0 15px;
+}
+.fa-exclamation-circle:before {
+	font-size: 90px;
+	color: cadetblue;	
+}
+
+.section {
+	margin-top: 20px;
+	background: lightgray;
+	border: 1px solid lightgray;
+}
+.state {
+	display: flex;
+	height: 28px;
+	line-height: 28px;
+}
+.state a {
+	margin:10px 10px 10px 0;
+	font-size: 20px;
+	font-weight: bold;
+}
+.clubwrap {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 33%);
+	gap: 3px;
+	margin-right: 13px;
+}
+.clubList {
+	width: 97%;
+	height: 87%;
+	border: 2px solid lightgray;
+	border-radius: 6px;
+	margin: 24px 10px 20px 0;
+	padding: 10px;
+}
+.clubList > .clubImage {
+	width: 97%;
+}
+.clubList > .clubImage > a > img {
+	display: block;
+	width: 267px;
+	height: 177px;
+}
+.clubContent {
+	width:97%;
+	height: 137px;
+	padding: 12px 26px 0 26px;
+}
+.clubContent > .title {
+	font-size: 24px;
+	font-weight: bold;
+}
+.clubContent > .startDate {
+	font-size: 14px;
+}
+.clubContent > .content {
+	margin-top: 8px;
+	font-size: 15px;
+}
+.detail { 
+	display: flex;
+	width: 275px;
+}
+.summary {
+	padding: 0 10px;
+	width: 198px;
+}
+.summary > .readerName {
+	width: 100%;
+}
+.cl-card {
+	margin-left: 10px;
+	margin-right: 5px;
+}
+.readerName > i {
+	color: cadetblue;
+}
+.reader {
+	font-size: 11px;
+	font-weight: bold;
+	color: #cecece;
+}
+.startDate {
+	font-size: 16px;
+	font-weight: bold;
+	color: #c3c3c3;
+}
+.fa-user-circle:before {
+	color: cadetblue;
+}
+.fa-frown:before {
+	color: #cc0000;
+	font-size: 28px;
+}
+.quit input {
+	width: 65px;
+	height: 34px;
+	color: white;
+	font-size: 15px;
+	font-weight: bold;
+	background: cadetblue;
+	border: 1px solid cadetblue;
+	border-radius: 17px;
+}
+.quit {
+	position: relative;
+	right: 6px;
+	bottom: 25px;
+	text-align: right;
+}

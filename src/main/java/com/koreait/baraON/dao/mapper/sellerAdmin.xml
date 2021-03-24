@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.baraON.dao.AdminSellerDao">
+
+	<select id="adminSellerList" resultType="com.koreait.baraON.dto.AdminSellerDto">
+		SELECT B.*
+		  FROM (SELECT A.*, ROWNUM AS RN
+		          FROM (SELECT *
+		                  FROM SELLER
+		              ORDER BY S_NO DESC) A) B
+		 WHERE B.RN BETWEEN #{param1} AND #{param2}
+	</select>
+	
+	<select id="sellerCount" resultType="int">
+		SELECT COUNT(*)
+		FROM SELLER
+	</select>
+	
+	<select id="adminSellerView" parameterType="int" resultType="com.koreait.baraON.dto.AdminSellerDto2">
+		SELECT *
+		  FROM SELLER
+		 WHERE S_NO = #{s_no}
+	</select>
+	
+	<delete id="adminSellerDelete" parameterType="int">
+		DELETE
+		  FROM SELLER
+		 WHERE S_NO = #{s_no}
+	</delete>
+	
+	<update id="adminSellerUpdate" parameterType="com.koreait.baraON.dto.AdminSellerDto2">
+		UPDATE SELLER
+		   SET S_NAME = #{s_name,jdbcType=VARCHAR},
+		       S_PW = #{s_pw,jdbcType=VARCHAR},
+		       S_PHONE = #{s_phone,jdbcType=VARCHAR}
+		 WHERE S_NO = #{s_no,jdbcType=INTEGER}
+	</update>
+</mapper>

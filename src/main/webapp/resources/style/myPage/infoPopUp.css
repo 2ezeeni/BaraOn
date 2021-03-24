@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+/* 초기화 */
+* {
+	padding: 0px;
+	margin: 0px;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+ul, ol {
+	list-style-type: none;
+}
+table {
+	border-collapse: collapse;
+}
+div {
+	box-sizing: border-box;
+}
+
+body {
+	width: 366px;
+	height: 234px;
+	margin: 20px;
+	font-family: 'Do Hyeon', sans-serif;
+    font-weight: normal;
+}
+h2 {
+	color: cadetblue;
+}
+h3 {
+	font-size: 23px;
+}
+hr {
+	border: 2px solid lightgray;
+	margin: 10px 0 15px 0;
+}
+.body {
+	margin: 0 11px;
+}
+.popup-top {
+	display: flex;
+}
+form > input[type="button"] {
+	position: relative;
+	left: 177px;
+	width: 59px;
+	height: 21px;
+	color: white;
+	background: cadetblue;
+	font-size: 12px;
+	border: 1px solid cadetblue;
+	border-radius: 3px;
+}
+table {
+	width: 270px;
+	line-height: 27px;
+	margin: 12px 0;
+}
+tr > td:first-of-type {
+	color: lightslategrey;
+}
+.card-icon {
+	width: 100px;
+	margin: 0 auto;
+}
+.fa-frown:before {
+	font-size: 33px;
+}

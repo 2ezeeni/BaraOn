@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.baraON.dao.PlaceOptionDao">
+	<insert id="placeOptionInsert" parameterType="com.koreait.baraON.dto.PlaceOptionDto" >
+		INSERT INTO
+		PLACEOPTION (PO_NO, P_NO, PO_NAME, PO_MIN, PO_MAX, PO_DAYPRICE, PO_HOLIDAY, PO_IMG, PO_FXILITY)
+		VALUES (PLACEOPTION_SEQ.NEXTVAL, #{p_no}, #{po_name}, #{po_min}, #{po_max}, #{po_dayPrice}, #{po_holiday}, #{po_img}, #{po_fxility})
+	</insert>
+	<select id="getPlaceOptionDto" parameterType="int" resultType="com.koreait.baraON.dto.PlaceOptionDto" >
+		SELECT *
+		FROM PLACEOPTION
+		WHERE PO_NO=#{param1}
+	</select>
+	<update id="placeOptionUpdate" parameterType="com.koreait.baraON.dto.PlaceOptionDto">
+		UPDATE PLACEOPTION
+		SET PO_NAME=#{po_name}, PO_DAYPRICE=#{po_dayPrice}, PO_HOLIDAY=#{po_holiday}, PO_MIN=#{po_min}, PO_MAX=#{po_max}, PO_FXILITY=#{po_fxility} 
+		<if test="po_img != null">
+			, PO_IMG=#{po_img}
+		</if>
+		WHERE PO_NO=#{po_no}
+	</update>
+	<delete id="placeOptionDelete" parameterType="int">
+		DELETE FROM
+		PLACEOPTION
+		WHERE PO_NO=#{param1}
+	</delete>
+</mapper>

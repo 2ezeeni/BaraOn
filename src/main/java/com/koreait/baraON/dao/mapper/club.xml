@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.baraON.dao.ClubDao">
+
+	<select id="clubList" resultType="com.koreait.baraON.dto.ClubDto">
+		SELECT * 
+		  FROM CLUB 
+		 WHERE C_PART = 0
+		   AND TO_CHAR(C_ENDDATE, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')  
+		   AND C_DELETE = 0
+	</select>
+	
+	<select id="instanceClubList" resultType="com.koreait.baraON.dto.ClubDto">
+		SELECT *
+		  FROM CLUB
+		 WHERE C_PART = 1 
+		   AND TO_CHAR(C_ENDDATE, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')  
+		   AND C_DELETE = 0
+	</select>
+	
+	<update id="finishDay" parameterType="int">
+		UPDATE CLUB
+		   SET C_DELETE = 1
+		 WHERE C_NO = #{param1} AND C_PART = 0
+		   AND TO_CHAR(C_ENDDATE, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+	</update>
+	
+	<update id="instancefinishDay" parameterType="int">
+		UPDATE CLUB
+		   SET C_DELETE = 1
+		 WHERE C_NO = #{param1} AND C_PART = 1
+		   AND TO_CHAR(C_ENDDATE, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+	</update>
+	
+ 	<insert id="clubInsert">
+		INSERT 
+		  INTO CLUB (C_NO, M_NO, C_TITLE, C_DESC, C_MIN, C_MAX, C_STARTDATE, C_ENDDATE, C_CONTENT, C_POSTDATE, C_MAINIMG, C_DELETE, C_PART)
+		VALUES (CLUB_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}, #{param7}, #{param8}, SYSDATE, #{param9}, 0, 0)
+	</insert>
+	
+ 	<insert id="instanceclubInsert">
+		INSERT 
+		  INTO CLUB (C_NO, M_NO, C_TITLE, C_DESC, C_MIN, C_MAX, C_STARTDATE, C_ENDDATE, C_CONTENT, C_POSTDATE, C_MAINIMG, C_DELETE, C_PART)
+		VALUES (CLUB_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}, #{param7}, #{param8}, SYSDATE, #{param9}, 0, 1)
+	</insert>
+	
+	<select id="clubView" parameterType="int" resultType="com.koreait.baraON.dto.ClubDto">
+		SELECT * 
+		  FROM CLUB
+		 WHERE C_NO = #{param1} 
+	</select>
+	
+	<select id="clubView2" parameterType="int" resultType="com.koreait.baraON.dto.MemberDto">
+		SELECT M_NICK 
+		  FROM MEMBER
+		 WHERE M_NO = ( SELECT M_NO
+		 				  FROM CLUB
+		 				 WHERE C_NO = #{param1} )
+	</select>
+	
+	<update id="clubDelete" parameterType="int">
+		UPDATE CLUB 
+		   SET C_DELETE = 1
+		 WHERE C_NO = #{param1}
+	</update>
+	
+	<update id="clubUpdate">
+		UPDATE CLUB
+		  SET 
+			  C_MAINIMG = #{param1},		   
+			  C_DESC = #{param2},		   
+		   	  C_MIN = #{param3}, 
+		   	  C_MAX = #{param4},
+		   	  C_CONTENT = #{param5}
+		 WHERE C_NO = #{param6}
+	</update>
+	
+	<select id="findJoin" resultType="com.koreait.baraON.dto.ClubListDto">
+		SELECT *
+		  FROM CLUBLIST
+		 WHERE C_NO = #{param1} AND M_NO = #{param2}
+	</select>
+	
+	<select id="findLike" resultType="com.koreait.baraON.dto.WishListDto">
+		SELECT *
+		  FROM WISHLIST
+		 WHERE C_NO = #{param1} AND M_NO = #{param2}
+	</select>
+	
+	<insert id="joinClub">
+		INSERT 
+		  INTO CLUBLIST (CL_NO, C_NO, M_NO, CL_CARD)
+		  VALUES (CLUBLIST_SEQ.NEXTVAL, #{param1}, #{param2}, 0)
+	</insert>
+	
+	<delete id="chkOutClub" parameterType="int">
+		DELETE 
+		  FROM CLUBLIST
+		 WHERE CL_NO = #{param1}
+	</delete>
+	
+	<insert id="instanceJoinClub">
+		INSERT 
+		  INTO CLUBLIST (CL_NO, C_NO, M_NO, CL_CARD)
+		  VALUES (CLUBLIST_SEQ.NEXTVAL, #{param1}, #{param2}, 0)
+	</insert>
+	
+	<delete id="instanceChkOutClub" parameterType="int">
+		DELETE 
+		  FROM CLUBLIST
+		 WHERE CL_NO = #{param1}
+	</delete>
+	
+	<insert id="likeClub">
+		INSERT 
+		  INTO WISHLIST (W_NO, C_NO, M_NO)
+		  VALUES (WISHLIST_SEQ.NEXTVAL, #{param1}, #{param2})
+	</insert>
+	
+	<delete id="unlikeClub" parameterType="int">
+		DELETE 
+		  FROM WISHLIST
+		 WHERE W_NO = #{param1}
+	</delete>
+	
+</mapper>

@@ -1,0 +1,61 @@
+@charset "UTF-8";
+div#uploaded-thumb-list{
+	display:grid;
+	
+	grid-template-columns: repeat(4, 200px);
+}
+#uploaded-thumb-list > strong{
+	grid-column : 1/4;
+}
+
+div.uploaded-img-box {
+	position : relative;
+	height: 200px;
+}
+div.uploaded-img-box>button {
+	position : absolute;
+	top:0px;
+	right:10px;
+}
+div.uploaded-img-box img{
+	position : absolute;
+	top:0px;
+	left:0px;
+	width : 200px;
+	height : 200px;
+}
+
+div.uploaded-img-box button {
+	width: 30px;
+	height: 30px;
+	line-height: 0;
+	border : 1px solid white;
+	border-radius: 15px;
+	background: cadetblue;
+	font-size: 20px;
+}
+ul.facility-list{
+	display: grid;
+	grid-template-columns : repeat(3, 55px);
+	gap : 10px 10px;
+	justify-content: space-between;
+}
+ul.facility-list li {
+	text-align: center;
+	border : 1px solid rgba(95, 158, 160, 0.8);
+	border-radius: 10px;
+}
+button[class^="select-"]{
+	width: 130px;
+}
+
+section.option input:not([type="file"]) {
+	width:100%;
+	padding : 5px;
+}
+div.option-subtitle{
+	font-weight: 900;
+	font-size: 15px;
+	margin-bottom : 10px;
+	border-bottom : 2px solid rgba(95, 158, 160, 1);
+}

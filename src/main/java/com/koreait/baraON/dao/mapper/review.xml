@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.baraON.dao.ReviewDao">
+	<update id="reviewUpdate" parameterType="com.koreait.baraON.dto.ReviewDto">
+		UPDATE REVIEW
+		SET RV_CONTENT = #{rv_content}, RV_MODIFYDATE = SYSDATE
+		WHERE RV_NO = #{rv_no}
+	</update>
+	
+	<update id="reviewDelete" parameterType="int" >
+		UPDATE REVIEW
+		SET RV_DELETE = 1
+		WHERE RV_NO = #{param1}
+	</update>
+	
+	<insert id="reviewInsert">
+		INSERT
+		INTO REVIEW (RV_NO, M_NO, P_NO, RV_DELETE, RV_STAR, RV_IMG, RV_POSTDATE, RV_MODIFYDATE, RV_CONTENT)
+		VALUES (REVIEW_SEQ.NEXTVAL, #{param1}, #{param2}, 0, #{param3}, #{param4}, SYSDATE, SYSDATE, #{param5})
+	</insert>
+	
+	<select id="reviewListAppend" resultType="com.koreait.baraON.dto.ReviewListDto" >
+		SELECT B.*
+		FROM (SELECT ROWNUM RN, A.*
+		FROM (SELECT RV.*, M.M_NICK, M.M_ID
+			 FROM REVIEW RV LEFT JOIN MEMBER M ON RV.M_NO = M.M_NO
+			 WHERE P_NO = #{param1}
+			 AND RV.RV_DELETE=0
+			 ORDER BY RV.RV_POSTDATE DESC ) A ) B
+		 WHERE RN BETWEEN #{param2} AND #{param3}
+	</select>
+	
+	<select id="lastReviewRN" parameterType="int" resultType="int">
+		SELECT COUNT(RN)
+		FROM (SELECT ROWNUM RN, A.*
+		FROM (SELECT RV.*, M.M_NICK, M.M_ID
+			 FROM REVIEW RV LEFT JOIN MEMBER M ON RV.M_NO = M.M_NO
+			 WHERE P_NO = #{param1}
+			 AND RV.RV_DELETE=0
+			 ORDER BY RV.RV_POSTDATE DESC ) A ) B
+	</select>
+	
+	<select id="getReviewDto" parameterType="int" resultType="com.koreait.baraON.dto.ReviewDto">
+		SELECT *
+		FROM REVIEW
+		WHERE RV_NO=#{param1}
+	</select>
+	
+	<select id="reviewByPNo" parameterType="int" resultType="com.koreait.baraON.dto.ReviewDto" >
+		SELECT *
+		FROM REVIEW
+		WHERE P_NO=#{param1}
+	</select>
+
+</mapper>

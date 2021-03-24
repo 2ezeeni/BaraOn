@@ -1,0 +1,462 @@
+@charset "UTF-8";
+html {
+	scroll-behavior: smooth;
+}
+#bottom-head div:nth-of-type(3){
+	border-bottom: 2px solid rgba(95, 158, 160, 1);
+}
+#bottom-head div:nth-of-type(3)>a{
+	color: rgba(95, 158, 160, 1);
+} 
+
+.body-wrap{
+	width: 1080px;
+	margin:0 auto;
+}
+section {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: flex-start;
+}
+.category-name{
+	width: 100px;
+	height:40px;
+	border: 1px solid #a0a0a0;
+	line-height: 40px;
+	border-radius: 20px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.modal, .modal-phone {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 999999; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.modal-content{
+	background-color: #fefefe;
+	margin: 15% auto; /* 15% from the top and centered */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 600px; /* Could be more or less, depending on screen size */
+	height: 500px;
+	border-radius: 10px;   
+}
+.content-wrap {
+	width : 100%;
+	margin: 0 auto;
+}
+.content-wrap > ul {
+	width: 100%;
+	list-style-type : none;
+}
+.content-wrap > ul li{
+	width : 100%;
+	margin : 5vh auto;
+	border-top : 2px solid rgba(95, 158, 160, 0.8);
+	text-align : center;
+	padding : 20px 0;
+	font-size : 30px;
+}
+button {
+	background : rgba(95, 158, 160, 0.8);
+}
+button:hover{
+	background : rgba(95, 158, 160, 1);
+}
+.modal-content > button {
+	width: 100%;
+	height : 50px;
+	font-size : 20px;
+	border : 0;
+	border-radius: 10px;
+}
+.content-wrap ul li span {
+	color : rgba(95, 158, 160, 1);
+} 
+.close{
+	width: 30px;
+	height: 30px;
+	font-size: 30px;
+	font-height: bold;
+	float:right;
+	cursor: pointer;
+	transition : all ease 0.5s;
+}
+.close:hover{
+	transform:rotateY(360deg);
+}
+
+button#place-update-btn, button#place-delete-btn{
+	width : 150px;
+	height : 30px;
+	font-size: 15px;
+	text-align : center;
+	line-height : 30px;
+	border : 0;
+	border-radius: 10px;
+	background: rgba(95, 158, 160, 0.5);
+	cursor:pointer;	
+}
+button#place-update-btn:hover, button#place-delete-btn:hover{
+	background: rgba(95, 158, 160, 1);
+}
+/* 공간 옵션 css */
+aside {
+	position : sticky;
+	top : 0px;
+	width:324px;
+	height : 80%;
+	margin: 0 auto;
+	border: 1px solid rgba(95, 158, 160, 0.8);
+	padding : 5px;
+}
+label{
+	display: block;
+	cursor:pointer;
+}
+label[for*="option"]::before{
+	content:"\f111";
+	font-family: "Font Awesome 5 Free";
+	font-weight: 400;
+	color: rgba(95, 158, 160, 1);
+}
+input[id*="option"]{
+	display : none;
+}
+input[id*="option"]:checked + label::before{
+	content:"\f058";
+	font-family: "Font Awesome 5 Free";
+	font-weight: 400;
+	color: rgba(95, 158, 160, 1);
+}
+
+
+.place-option-wrap div:not(.facility) {
+	margin-bottom: 10px;
+}
+/* 혹시 편의시설이 3개이상일 때 flex설정이 깨진다면 여길 볼 것 */
+div[id*="facilities"] {
+	display : grid;
+	grid-template-columns : repeat(3,30%);
+	gap : 5px 5%;
+	justify-content: space-around;
+}
+.facility {
+	border : 1px solid black;
+	border-radius: 20px;
+	text-align: center;
+	background: rgba(95, 158, 160, 0.8);
+	height: 40px;
+	line-height : 40px;
+	font-size : 12px;
+	/* margin : 4px 4px; */
+}
+.facility:hover {
+	background : rgba(95, 158, 160, 1);
+}
+.option-info-box>.img-box{
+	height: 200px;
+	overflow: hidden;
+}
+.option-info-box>.img-box>img{
+	width: 100%;
+	transition: all ease 0.5s;
+}
+.option-info-box>.img-box>img:hover{
+	transform: scale(1.2);
+}
+button[class^="count-"]{
+	width: 30px;
+	height: 30px;
+	border: 0 solid black;
+	border-radius: 5px;
+}
+input[name="res_people"]{
+	width:150px;
+	border: 0 solid black;
+	border-bottom: 2px solid black;
+	text-align: center;
+	font-size: 20px;	
+}
+.reserve-form > .btn-wrap button{
+	width : 140px;
+	height : 50px;
+	line-height: 50px;
+	text-align: center;
+	background: rgba(95, 158, 160, 0.8);
+	cursor: pointer;
+	font-size: 15px;
+	border : 0;
+	border-radius: 10px;
+}
+.reserve-form > .btn-wrap > button:hover{
+ 	background : rgba(95, 158, 160, 1);
+	
+}
+.hidden-box{
+	display:none;
+}
+.active{
+	display:block;
+}
+/* 공간 메인 css */
+article{
+	width: 756px;
+	height: 100%;
+	margin: 0 auto;
+	margin-right: 10px;
+	border-left : 1px solid rgba(95, 158, 160, 1);
+	border-right : 1px solid rgba(95, 158, 160, 1);
+	padding : 20px;
+}
+
+/* 메인 nav-bar css */
+.place-nav {
+	position : sticky;
+	top: 0;
+	margin-bottom: 10px;
+	background: #FFF;
+	z-index: 999998;
+}
+
+.place-nav > ul {
+	display: flex;
+	list-style-type : none;
+	width: 100%;
+	margin : 0 auto;
+}
+.place-nav > ul > li {
+	width:25%;
+	box-shadow: 1px 0 0 0 rgba(95, 158, 160, 1), -1px 0 0 0 rgba(95, 158, 160, 1);
+	background: #FFF;
+}
+.place-nav > ul > li > a {
+	display: inline-block;
+	width : 100%;
+	height: 30px;
+	line-height: 30px;
+	text-align : center;
+}
+.place-nav > ul > li > a:hover{
+	background: rgba(95, 158, 160,0.8);
+}
+h3:not(.place-line-desc1 h3){
+	font-size: 30px;
+	color: rgba(95,158,160,1);
+	margin-bottom: 10px;
+}
+.place-line-desc2 {
+	margin-left: 20px;
+	font-size: 40px;
+	color: #a0a0a0;
+}
+div[id*="place-"]{
+	padding-top:30px;
+	margin-bottom: 20px;
+	border-top: 3px solid rgba(95, 158, 160, 0.8);
+}
+ol#info-list, ol#remark-list{
+	margin-left: 20px;
+}
+.thumbnail-box{
+	overflow:hidden;
+}
+.thumbnail-box img.thumbnail {
+	width : 100%;
+	height: 600px;
+	transition: all ease 0.5s;
+}
+.thumbnail-box img.thumbnail:hover {
+	transform : scale(1.2) ;
+}
+.slick-track{
+	overflow:hidden;
+}
+
+/* 별점 css */
+input[id*=star]{
+	display:none;
+}
+label[for*=star]{
+	display:inline-block;
+	margin : 0;
+	color: rgba(95, 158, 160, 0.8);
+	font-size: 20px;
+}
+label[for*=star]::before{
+	content:"\f005";
+	font-family: "Font Awesome 5 Free";
+	font-weight: 400;
+}
+label[for*=star]:hover::before{
+	content:"\f005";
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+}
+input[id*=star]:checked + label::before{
+	content:"\f005";
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+}
+/* textarea */
+textarea {
+	display: block;
+	width : 100%;
+	height : 120px;
+}
+
+/* 리뷰작성 버튼 */
+#file-upload-btn{
+	display:none;
+}
+
+.review-insert-btn-wrap > input[type="button"], #upload-btn{
+	display: inline-block;
+	width : 150px;
+	height : 30px;
+	font-size: 15px;
+	text-align : center;
+	line-height : 30px;
+	border : 0;
+	border-radius: 10px;
+	background: rgba(95, 158, 160, 0.5);
+	cursor:pointer;	
+}
+.review-insert-btn-wrap > input[type="button"]:hover, #upload-btn:hover{
+	background: rgba(95, 158, 160, 1);
+}
+
+/* 작성된 review */
+.review{
+	margin : 10px auto;
+	border-top : 2px solid rgba(95, 158, 160, 0.8);
+	padding-top : 20px;
+	padding-bottom : 20px;
+}
+.review-star, .modal-star{
+	color: rgb(95, 158, 160);
+}
+ul.img-list{
+	display: flex;
+	list-style-type: none;
+}
+ul.img-list li {
+	width : 80px;
+	height : 80px;
+	position: relative;
+}
+ul.img-list li>img {
+	width : 100%;
+	height : 100%;
+}
+ul.img-list li>img:hover{
+	position: absolute;
+	z-index:999997;
+	animation : img-move 1s both; 
+}
+
+@keyframes img-move {
+	0% {left : 0px;}
+	100% {left : 100%; transform: scale(6.0);}
+}
+.review-btns > input[type="button"] {
+	width: 150px;
+	height : 30px;
+	font-size: 15px;
+	border : 0;
+	border-radius: 10px;
+	background : rgba(95, 158, 160, 0.5);
+	cursor:pointer;
+}
+.review-btns > button:hover {
+	/* background : rgba(216,191,216, 1); */
+}
+
+/* 캘린더 css */
+
+.ui-datepicker {
+	width:300px;
+	margin : 30px auto;
+}
+.ui-datepicker-header{
+	width: 300px;
+	height: 30px;
+	display: flex;
+	position:relative;
+}
+td.ui-datepicker-current-day{
+	background: rgba(95, 158, 160,1);
+}
+.ui-datepicker-title{
+	width:100%;
+	text-align: center;
+}
+.ui-datepicker-prev{
+	position:absolute;
+	left:2px;
+	cursor:pointer;
+		
+}
+.ui-datepicker-next{
+	position:absolute;
+	right:2px;
+	cursor:pointer;
+}
+.ui-state-disabled{
+	cursor:auto;
+}
+.ui-datepicker-calendar {
+	width: 300px;
+}
+td {
+	height: 30px;
+	text-align: center;
+	border: 1px solid black;
+	cursor: pointer;
+}
+.ui-unselectable {
+	cursor: default;
+}
+td>a{
+	width:100%;
+}
+td.ui-datepicker-today{
+	background: rgba(95, 158, 160, 0.5);
+}
+.ui-datepicker-unselectable:not(.ui-datepicker-other-month) {
+	background : red;
+}
+td:not(.ui-datepicker-unselectable):hover{
+	background: rgba(95, 158, 160, 1);
+}
+.ui-datepicker-week-end:not(.ui-datepicker-unselectable)>a{
+	color: red;
+}
+@media screen and (max-width : 1100px){
+	.body-wrap{
+		width: 600px;
+		margin: 0 auto;
+	}
+	section {
+		width:100%;
+		display: block;
+	}
+	aside {
+		position:static;
+		width: 100%;
+	}
+	article{
+		width: 100%;
+		margin: 0 auto;
+	}
+	.option-info-box>.img-box{
+		height: 397px;
+		margin: 20px;
+	}
+}

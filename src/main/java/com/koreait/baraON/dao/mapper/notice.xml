@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.baraON.dao.NoticeDao">
+
+	<select id="noticeList" resultType="com.koreait.baraON.dto.NoticeDto">
+		SELECT B.*
+	 	 FROM (SELECT A.*, ROWNUM AS RN
+               FROM (SELECT *
+                     FROM NOTICE
+	              ORDER BY N_NO DESC) A) B
+         WHERE B.RN BETWEEN #{param1} AND #{param2}
+	</select>	
+	
+	<select id="totalRecord" resultType="int">
+		SELECT COUNT(*)
+		FROM NOTICE
+	</select>
+	
+	<select id="noticeView" parameterType="int" resultType="com.koreait.baraON.dto.NoticeDto">
+		SELECT *
+		FROM NOTICE
+		WHERE N_NO = #{no}
+	</select>
+	
+	<insert id="noticeInsert">
+		INSERT INTO
+		NOTICE (N_NO, N_TITLE, N_CONTENT, N_POSTDATE)
+		VALUES (NOTICE_SEQ.NEXTVAL, #{param1}, #{param2}, SYSDATE)
+	</insert>
+	
+	<delete id="noticeDelete">
+		DELETE
+		FROM NOTICE
+		WHERE N_NO = #{no}
+	</delete>
+	
+	<update id="noticeUpdate">
+		UPDATE NOTICE
+		SET N_TITLE = #{param1},
+			N_CONTENT = #{param2}
+		WHERE N_NO = #{param3}
+	</update>
+	
+</mapper>

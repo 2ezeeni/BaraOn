@@ -1,0 +1,75 @@
+@charset "UTF-8";
+.box{
+	height: 1500px;
+	text-align:center;
+}
+#m_id{
+	width : 400px; 
+	height : 50px; 
+	font-size : 15px;
+}
+#m_pw{
+	width : 400px; 
+	height : 50px; 
+	font-size : 15px;
+}
+#m_pw2{
+	width : 400px; 
+	height : 50px; 
+	font-size : 15px;
+}
+#m_nick{
+	width : 400px; 
+	height : 50px; 
+	font-size : 15px;
+}
+#m_name{
+	width : 400px; 
+	height : 50px; 
+	font-size : 15px;
+}
+#m_birth{
+	width : 400px; 
+	height : 50px; 
+	font-size : 15px;
+}
+#m_phone{
+	width : 400px; 
+	height : 50px; 
+	font-size : 15px;
+}
+#m_email2{
+	width : 400px; 
+	height : 50px; 
+	font-size : 15px;
+}
+#emailAuth2{
+	width : 400px; 
+	height : 50px; 
+	font-size : 15px;
+	background:cadetblue;
+	color:white;
+}
+#btn{
+	width : 400px; 
+	height : 50px; 
+	font-size : 15px;
+	background:cadetblue;
+	color:white;
+}
+
+#m_email{
+	width : 200px; 
+	height : 50px; 
+	font-size : 15px;
+}
+
+#emailAuth1{
+	width : 200px; 
+	height : 50px; 
+	font-size : 15px;
+	background:cadetblue;
+	color:white;
+}
+
+

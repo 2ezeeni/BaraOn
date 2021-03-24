@@ -1,0 +1,154 @@
+@charset "UTF-8";
+#bottom-head div:nth-of-type(3){
+	border-bottom: 2px solid rgba(95, 158, 160, 1);
+}
+#bottom-head div:nth-of-type(3)>a{
+	color: rgba(95, 158, 160, 1);
+} 
+
+.body-wrap{
+	width: 1260px;
+	margin: 30px auto;
+}
+.category-wrap {
+	width : 80%;
+	margin: 0 auto;
+}
+.category-list{
+	width : 100%;
+	margin: 0 auto;
+	display:grid;
+	grid-template-columns : repeat(10,120px);
+	justify-content : center;
+}
+.category > a{
+	display:block;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+}
+.category>a:hover{
+	background: rgba(95, 158, 160, 0.8);
+}
+
+.search-wrap{
+	width: 100vw;
+	height: 80px;
+	background: #fdfdfd;
+	position:sticky;
+	top:0;
+	z-index:99999;
+}
+.search-wrap>input{
+	font-size: 20px;
+	height: 50px;
+	width: 300px;
+	border: 0 solid white;
+	padding: 20px;
+	border-bottom : 2px solid #8f8f8f;
+	margin: 0 auto;
+}
+#search-btn{
+	height: 50px;
+	width: 50px;
+	font-size: 30px;
+	background:none;
+	border: 0 solid white;
+	margin: 5px 0;
+}
+div.search-result{
+	font-size: 35px;
+	
+}
+span.query-span{
+	color: rgba(95, 158, 160, 1);
+}
+div.empty-list-box{
+	font-size: 35px;
+	color: rgba(95, 158, 160, 1);
+}
+
+h1, h3{
+	text-align: center;
+}
+.title{
+	margin : 10px;
+}
+.subtitle{
+	margin : 10px 20px;
+	text-align: left;
+}
+.list-wrap{
+	width : 100%;
+	margin: 0 auto;
+}
+a#insert-btn{
+	display : block;
+	width: 150px;
+	border: 0 solid black;
+	border-radius: 10px;
+	padding: 10px 0;
+	background : rgba(95, 158, 160, 0.8);
+	cursor: pointer;
+	margin: 5px 0;
+	font-size: 12px;
+	text-align: center;
+}
+a#insert-btn:hover{
+	background: rgba(95, 158, 160, 1);
+}
+.place-list-wrap{
+	width : 100%;
+	margin: 0 auto;
+	display:grid;
+	grid-template-columns : repeat(3,400px);
+	row-gap : 30px;
+	column-gap: 30px;
+	justify-content : space-evenly;
+}
+article.place-list>a>div.thumbnail-box, .slick-track{
+	overflow: hidden;
+	
+}
+img[id^="slick-slide"]{
+	width: 100%;
+	height : 400px;
+	transition: all ease 0.5s;
+}
+img[id^="slick-slide"]:hover{
+	transform : scale(1.2) ;
+	height: 400px;
+}
+
+img {
+	width:100%;
+}
+.info-price>strong span, .info-people-reviews>span{
+	text-align: right;
+}
+@media screen and (max-width : 1068px){
+	.body-wrap{
+		width:810px;
+	}
+	.category-list{
+		grid-template-columns : repeat(6,120px);
+	}
+	
+	.place-list-wrap{
+		grid-template-columns : repeat(2,400px);
+		column-gap: 10px;
+	}
+}
+@media screen and (max-width: 767px) {
+	.body-wrap{
+		width:100%;
+	}
+	.category-list{
+		grid-template-columns : repeat(4,120px);
+	}
+	.place-list-wrap{
+		
+		grid-template-columns : repeat(1,100%);
+		column-gap: 0px;
+	}
+}

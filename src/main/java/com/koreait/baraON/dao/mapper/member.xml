@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.baraON.dao.MemberDao">
+	<select id="memberLogin" resultType="com.koreait.baraON.dto.MemberDto">
+		SELECT *
+			FROM MEMBER
+		  WHERE M_ID = #{param1}
+		   AND M_PW = #{param2}
+	</select>
+	<select id="memberKakaoLogin" resultType="com.koreait.baraON.dto.MemberDto">
+		SELECT *
+			FROM MEMBER
+		  WHERE M_ID = #{param1}
+	</select>
+	<select id="sellerLogin" resultType="com.koreait.baraON.dto.SellerDto">
+		SELECT *
+			FROM SELLER
+		  WHERE S_ID = #{param1}
+		   AND S_PW = #{param2}
+	</select>
+	<select id="findMemberId" resultType="com.koreait.baraON.dto.MemberDto">
+		SELECT M_ID
+			FROM MEMBER
+		  WHERE M_NAME = #{param1}
+		   AND M_EMAIL = #{param2}
+	</select>
+	<select id="findSellerId" resultType="com.koreait.baraON.dto.SellerDto">
+		SELECT S_ID
+			FROM SELLER
+		  WHERE S_NAME = #{param1}
+		   AND S_EMAIL = #{param2}
+	</select>
+	<select id="findMemberPw" resultType="com.koreait.baraON.dto.MemberDto">
+		SELECT *
+			FROM MEMBER
+		  WHERE M_ID = #{param1}
+		   AND M_NAME = #{param2}
+		   AND M_EMAIL = #{param3}
+	</select>
+	<select id="findSellerPw" resultType="com.koreait.baraON.dto.SellerDto">
+		SELECT *
+			FROM SELLER
+		  WHERE S_ID = #{param1}
+		   AND S_NAME = #{param2}
+		   AND S_EMAIL = #{param3}
+	</select>
+	<update id="changeMemberPw">
+		UPDATE MEMBER
+			SET M_PW = #{param1}
+		 WHERE M_ID = #{param2}
+	</update>
+	<update id="changeSellerPw">
+		UPDATE SELLER
+			SET S_PW = #{param1}
+		 WHERE S_ID = #{param2}
+	</update>
+	
+	
+	<!-- place -->
+	<select id="getSellerDto" parameterType="int" resultType="com.koreait.baraON.dto.SellerDto" >
+		SELECT *
+		FROM SELLER
+		WHERE S_NO=#{param1}
+	</select>
+	
+	
+	
+	
+	<select id="memberSearch" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE M_ID= #{m_id}
+	</select>
+	
+	<select id="memberNickSearch" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE M_NICK= #{m_nick}
+	</select>
+	
+	<select id="memberPhoneSearch" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE M_Phone= #{m_phone}
+	</select>
+	
+	<select id="memberEmailSearch" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE M_email= #{m_email}
+	</select>
+	
+	<select id="memberPwSearch" parameterType="String" resultType="String">
+		SELECT M_PW
+		FROM MEMBER
+		WHERE M_ID= #{m_id}
+	</select>
+
+	<insert id="memberInsert" parameterType="com.koreait.baraON.dto.MemberDto">
+		INSERT INTO
+		MEMBER (M_NO, M_ID, M_PW, M_PHONE, M_NAME, M_BIRTH, M_NICK, M_EMAIL, M_REGDATE, M_AGREEMENT)
+		VALUES (MEMBER_SEQ.NEXTVAL, #{m_id}, #{m_pw}, #{m_phone}, #{m_name}, #{m_birth}, #{m_nick}, #{m_email}, SYSDATE, #{m_agreement})
+	</insert>
+	
+	<select id="memberView"  parameterType="int" resultType="com.koreait.baraON.dto.MemberDto"> 
+		SELECT *
+		FROM MEMBER
+		WHERE M_NO=#{m_no}
+	</select>
+	
+	<update id="memberPwUpdate"  parameterType="com.koreait.baraON.dto.MemberDto">
+		UPDATE MEMBER
+		SET M_PW=#{m_pw}
+		WHERE M_NO = #{m_no}
+	</update>
+	
+	<update id="memberNickUpdate"  parameterType="com.koreait.baraON.dto.MemberDto">
+		UPDATE MEMBER
+		SET M_NICK=#{m_nick}
+		WHERE M_NO = #{m_no}
+	</update>
+	
+	<update id="memberUpdate"  parameterType="com.koreait.baraON.dto.MemberDto">
+		UPDATE MEMBER
+		SET M_PHONE=#{m_phone},
+			M_EMAIL=#{m_email}
+		WHERE M_NO = #{m_no}
+	</update>
+
+	<delete id="memberDelete" parameterType="int">
+		DELETE 
+		FROM MEMBER
+		WHERE M_NO =#{m_no}
+	</delete>
+	
+</mapper>

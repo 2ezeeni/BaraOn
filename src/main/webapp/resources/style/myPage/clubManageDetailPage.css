@@ -1,0 +1,153 @@
+@charset "UTF-8";
+/* 초기화 */
+* {
+	padding: 0px;
+	margin: 0px;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+ul, ol {
+	list-style-type: none;
+}
+table {
+	border-collapse: collapse;
+}
+div {
+	box-sizing: border-box;
+}
+
+.sub_title {
+	margin: 10px 0; 
+}
+.state {
+	display: flex;
+	height: 28px;
+	line-height: 28px;
+}
+.state a {
+	margin:10px 10px 10px 0;
+	font-size: 20px;
+	font-weight: bold;
+}
+.buttons {
+	display: flex;
+	position: relative;
+	float: right;
+	right: 131px;	
+	justify-content: flex-end;
+}
+.button {
+	width: 73px;
+	height: 33px;
+	font-size: 16px;
+	border-radius: 3px;
+	margin: 4px;
+}
+.delete {
+	color: white;
+	background: #e7e7e7;
+	border: 1px solid #e7e7e7;
+}
+.back, .addPlace, .update {
+	color: white;
+	background: cadetblue;
+	border: 1px solid cadetblue;
+}
+.clubSimple-wrap {
+	display: flex;
+	margin: 31px 0 15px 0;
+}
+.clubImage {
+	width: 300px;
+}
+.clubImage > a > img {
+	width: 100%;
+}
+.clubContent {
+	margin-left: 29px;
+}
+.part {
+	color: cadetblue;
+}
+.date {
+	color: gray;
+	font-size: 17px;
+	margin: 20px 0 0 75px;
+}
+table {
+	width: 86%;
+	text-align: center;
+	border: 3px solid #c0c0c0;
+	border-color: #c0c0c0;
+}
+th {
+	background: lightgray;
+}
+th:first-of-type {
+	width: 100px;
+}
+th, td {
+	padding: 3px;
+	border: 2px solid #c0c0c0;
+}
+.addPlace, .update{
+	float: right;
+	position: relative;
+	right: 130px;
+	bottom: 44px;
+}
+.empty {
+	height: 200px;
+	color: lightgray;
+	line-height: 160px;
+	text-align: center;
+	font-size: 20px;
+}
+.membersInfo-wrap {
+	width: 86%;
+}
+.clubCount {
+	margin-bottom: 20px;
+}
+.membersInfo {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(33%, auto));
+	row-gap: 20px;
+}
+.memberInfo {
+	display: flex;
+	font-size: 19px;
+}
+.cl_card {
+	height: 30px;
+}
+.fa-user:before {
+	color: lightslategrey;
+	margin-right: 20px;
+}
+.detailBtn {
+	position: relative;
+	width: 54px;
+	height: 23px;
+	color: white;
+	background: cadetblue;
+	font-size: 14px;
+	border: 1px solid cadetblue;
+	border-radius: 3px;
+	left: 118px;
+	bottom: 30px;
+}
+.content-section {
+	border: 1px solid lightgray;
+}
+.min, .max, .clubCount {
+	letter-spacing: 2px;
+}
+.max {
+	margin-bottom: 25px;
+}
+h3 {
+	margin: 10px 0;
+}

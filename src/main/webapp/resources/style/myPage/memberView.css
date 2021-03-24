@@ -1,0 +1,57 @@
+@charset "UTF-8";
+* {
+	padding: 0px;
+	margin: 0px;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+ul, ol {
+	list-style-type: none;
+}
+table {
+	border-collapse: collapse;
+}
+div {
+	box-sizing: border-box;
+}
+
+.member-category:nth-of-type(1) li:nth-of-type(1) > a {
+	color: cadetblue;
+}
+.box{
+		display: inline-flex;
+}
+table{
+	height : 100px; 
+	font-size : 15px;
+	padding: 17px 0;
+	margin: 50px;
+}
+td,th{
+	padding:20px;
+}
+th{
+	width : 200px; 
+	height : 50px; 
+}
+td{
+	width : 400px; 
+	height : 50px; 
+}
+input{
+	width : 200px; 
+	height : 30px; 
+}
+.mypage-contents{
+	width : 1000px; 
+	height : 1300px;
+}
+input[type=button]{
+	background:cadetblue;
+	color:white;
+}
+tr:last-of-type > td {
+	text-align: center;
+}

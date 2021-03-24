@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.baraON.dao.MyPageDao">
+	<select id="wishList" parameterType="int" resultType="com.koreait.baraON.dto.WishListDto">
+		SELECT W.W_NO, C.C_NO, C.C_TITLE, C.C_CONTENT, C.C_MAINIMG
+			FROM CLUB C JOIN WISHLIST W
+		  ON C.C_NO = W.C_NO
+		 WHERE W.M_NO = #{param1}
+		 AND C.C_DELETE = 0
+	</select>
+	<delete id="wishDelete" parameterType="int">
+		DELETE 
+			FROM WISHLIST
+		 WHERE W_NO = #{param1}
+	</delete>
+	<select id="clubList" parameterType="int" resultType="com.koreait.baraON.dto.ClubListDto">
+		SELECT *
+			FROM CLUBLIST CL JOIN CLUB C ON CL.C_NO = C.C_NO
+				JOIN MEMBER M ON M.M_NO = C.M_NO
+			WHERE CL.M_NO = #{param1}
+	 			AND C.C_PART = #{param2}
+	 			AND TO_CHAR(C.C_ENDDATE, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+	 			AND C.C_DELETE = 0
+	</select>
+	<select id="lastClubList" parameterType="int" resultType="com.koreait.baraON.dto.ClubListDto">
+		SELECT *
+			FROM CLUBLIST CL JOIN CLUB C ON CL.C_NO = C.C_NO
+				JOIN MEMBER M ON M.M_NO = C.M_NO
+			WHERE CL.M_NO = #{param1}
+	 			AND C.C_PART = #{param2}
+	 			AND TO_CHAR(C.C_ENDDATE, 'YYYY-MM-DD') &lt; TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+	</select>
+	<delete id="clubListDelete" parameterType="int">
+		DELETE
+			FROM CLUBLIST
+		 WHERE CL_NO = #{param1}
+	</delete>
+	<select id="canMemberDelete1" resultType="int">
+		SELECT COUNT(*)
+			FROM CLUB C JOIN MEMBER M
+		  ON C.M_NO = M.M_NO
+		 WHERE C.C_DELETE = 0 
+		 	AND C.M_NO = #{param1}
+		 	AND TO_CHAR(C.C_ENDDATE, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+	</select>
+	<select id="canMemberDelete2" resultType="int">
+		SELECT COUNT(*)
+			FROM RESERVATION R JOIN MEMBER M
+		  ON R.M_NO = M.M_NO
+		 WHERE R.M_NO = #{param1} 
+		 	AND TO_CHAR(R.RES_DATE, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+	</select>
+	<delete id="infoMemberDelete1" parameterType="int">
+		DELETE
+			FROM MEMBER
+		 WHERE M_NO = #{param1}
+	</delete>
+	<update id="infoMemberDelete2" parameterType="int">
+		UPDATE CLUB
+			SET C_DELETE = 1
+		 WHERE M_NO = #{param1}
+	</update>
+	<select id="canSellerDelete" resultType="int">
+		SELECT COUNT(*)
+			FROM RESERVATION R JOIN PLACEOPTION PO
+		  ON R.PO_NO IN (SELECT PO.PO_NO
+		  					FROM PLACEOPTION PO JOIN PLACE P
+		  				  ON PO.P_NO IN (SELECT P.P_NO
+		  				  					FROM PLACE P JOIN SELLER S
+		  				  				  ON P.S_NO = S.S_NO
+		  				  				 WHERE S.S_NO = #{param1}))
+		 WHERE TO_CHAR(R.RES_DATE, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+	</select>
+	<delete id="infoSellerDelete1" parameterType="int">
+		DELETE
+			FROM SELLER
+		 WHERE S_NO = #{param1}
+	</delete>
+	<update id="infoSellerDelete2" parameterType="int">
+		UPDATE PLACE
+			SET P_DELETE = 1
+		 WHERE S_NO = #{param1}
+	</update>
+	<select id="clubCount" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+			FROM CLUBLIST 
+		 WHERE C_NO = #{param1}
+	</select>
+	<select id="clubManageList" parameterType="int" resultType="com.koreait.baraON.dto.ClubDto">
+		SELECT C_NO, C_TITLE, C_STARTDATE, C_ENDDATE, C_MIN, C_MAX, C_MAINIMG, C_PART
+			FROM CLUB
+		 WHERE M_NO = #{param1}
+		 	 AND TO_CHAR(C_ENDDATE, 'YYYY-MM-DD') >= TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+			 AND C_DELETE = 0
+	</select>
+	<select id="lastClubManageList" parameterType="int" resultType="com.koreait.baraON.dto.ClubDto">
+		SELECT C_NO, C_TITLE, C_STARTDATE, C_ENDDATE, C_MIN, C_MAX, C_MAINIMG, C_PART
+			FROM CLUB
+		 WHERE M_NO = #{param1}
+		 	 AND TO_CHAR(C_ENDDATE, 'YYYY-MM-DD') &lt; TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+	</select>
+	<select id="clubManageDetail" parameterType="int" resultType="com.koreait.baraON.dto.ClubDto">
+		SELECT C_NO, C_TITLE, C_DESC, C_CONTENT, C_STARTDATE, C_ENDDATE, C_MIN, C_MAX, C_MAINIMG, C_PART
+			FROM CLUB
+		 WHERE C_NO = #{param1}
+	</select>
+	<select id="clubReservationList" parameterType="int" resultType="com.koreait.baraON.dto.ClubReservationListDto">
+		SELECT RES.RES_NO, RES.RES_DATE, RES.RES_PEOPLE, RES.RES_STATE, RES.RES_PRICE,
+               PO.PO_NAME, PO.PO_IMG, P.P_NO, P.P_TITLE, P.P_NAME, P.P_ADDR, P.P_ADDRDETAIL, P.P_IMG
+			FROM RESERVATION RES JOIN PLACEOPTION PO ON RES.PO_NO = PO.PO_NO
+				JOIN PLACE P ON P.P_NO = PO.P_NO
+ 		 WHERE RES.M_NO = #{param1}
+			 AND P.P_DELETE = 0 
+	</select>
+	<select id="memberInfo" parameterType="int" resultType="com.koreait.baraON.dto.ClubListDto">
+		SELECT CL.CL_NO, CL.CL_CARD, M.M_NO, M.M_NAME, M.M_BIRTH, M.M_NICK, M.M_PHONE, M.M_EMAIL
+			FROM CLUBLIST CL JOIN MEMBER M 
+		  ON CL.M_NO = M.M_NO
+ 		 WHERE CL.C_NO = #{param1}
+	</select>
+	<update id="addCard" parameterType="int">
+		UPDATE CLUBLIST
+			SET CL_CARD  = CL_CARD + 1
+ 		 WHERE CL_NO = #{param1}
+	</update>
+	<select id="cardCount" parameterType="int" resultType="int">
+		SELECT CL_CARD
+			FROM CLUBLIST 
+ 		 WHERE CL_NO = #{param1}
+	</select>
+	<delete id="clubMemberDelete" parameterType="int">
+		DELETE FROM CLUBLIST
+		 WHERE CL_NO = #{param1}
+	</delete>
+	
+</mapper>

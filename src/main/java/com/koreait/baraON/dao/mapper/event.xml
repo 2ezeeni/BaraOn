@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.baraON.dao.EventDao">
+
+	<select id="eventList" resultType="com.koreait.baraON.dto.EventDto">
+		SELECT B.*
+	 	 FROM (SELECT A.*, ROWNUM AS RN
+               FROM (SELECT *
+                     FROM EVENT
+	              ORDER BY E_NO DESC) A) B
+         WHERE B.RN BETWEEN #{param1} AND #{param2}
+	</select>	
+	
+	<select id="totalRecord" resultType="int">
+		SELECT COUNT(*)
+		FROM EVENT
+	</select>
+	
+	<select id="eventView" parameterType="int" resultType="com.koreait.baraON.dto.EventDto">
+		SELECT *
+		FROM EVENT
+		WHERE E_NO = #{no}
+	</select>
+	
+	<insert id="eventInsert">
+		INSERT INTO
+		EVENT (E_NO, E_TITLE, E_CONTENT, E_FILENAME, E_BANNER ,E_POSTDATE)
+		VALUES (NOTICE_SEQ.NEXTVAL, #{e_title}, #{e_content}, #{e_filename}, #{e_banner} ,SYSDATE)
+	</insert>
+	
+	<delete id="eventDelete">
+		DELETE
+		FROM EVENT
+		WHERE E_NO = #{no}
+	</delete>
+	
+	<update id="eventUpdate">
+		UPDATE EVENT
+		SET E_TITLE = #{param1,jdbcType=VARCHAR},
+			E_CONTENT = #{param2,jdbcType=VARCHAR},
+			E_FILENAME = #{param4,jdbcType=VARCHAR}
+		WHERE E_NO = #{param3}
+	</update>
+	
+</mapper>

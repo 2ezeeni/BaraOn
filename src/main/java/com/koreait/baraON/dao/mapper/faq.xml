@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.baraON.dao.FAQDao">
+
+	<select id="faqList" parameterType="Map" resultType="com.koreait.baraON.dto.FAQDto">
+		SELECT B.* 
+		FROM (SELECT A.*, ROWNUM AS RN 
+			FROM (SELECT * 
+					FROM FAQ 
+					<if test="f_category == 1">
+						WHERE 1=1
+					</if>
+					<if test="f_category != 1">
+					WHERE F_CATEGORY = #{f_category} 
+					</if>
+					ORDER BY F_NO DESC) A) B 
+			WHERE B.RN BETWEEN #{beginRecord} AND #{endRecord} 
+	</select>
+	
+	<select id="totalRecord" parameterType="Map" resultType="int">
+		SELECT COUNT(*) 
+		FROM FAQ 
+		<if test="f_category == 1">
+			WHERE 1=1
+		</if>
+		<if test="f_category !=1">
+			WHERE F_CATEGORY = #{f_category}
+		</if>
+	</select>
+	
+	<select id="faqView" parameterType="int" resultType="com.koreait.baraON.dto.FAQDto">
+		SELECT *
+		FROM FAQ
+		WHERE F_NO = #{no}
+	</select>
+	
+	<insert id="faqInsert">
+		INSERT INTO
+		FAQ (F_NO, F_TITLE, F_CONTENT, F_CATEGORY , F_REGDATE)
+		VALUES (FAQ_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3}, SYSDATE)
+	</insert>
+	
+	<delete id="faqDelete">
+		DELETE
+		FROM FAQ
+		WHERE F_NO = #{no}
+	</delete>
+	
+	<update id="faqUpdate">
+		UPDATE FAQ
+		SET F_TITLE = #{param1},
+			F_CONTENT = #{param2}
+		WHERE F_NO = #{param3}
+	</update>
+	
+	
+	
+	<select id="indexFaq" resultType="com.koreait.baraON.dto.FAQDto" >
+		SELECT B.*
+		FROM (SELECT ROWNUM RN, A.*
+				FROM (SELECT *
+					FROM FAQ
+				ORDER BY F_REGDATE DESC) A) B
+		WHERE B.RN BETWEEN #{param1} AND #{param2}
+	</select>
+	
+</mapper>

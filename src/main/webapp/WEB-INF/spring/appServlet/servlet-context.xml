@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<!-- index command -->
+	<beans:bean id="indexCommand" class="com.koreait.baraON.command.IndexCommand" />
+	
+	<!-- place command -->
+	<beans:bean id="placeListCommand" class="com.koreait.baraON.command.place.PlaceListCommand" />
+	<beans:bean id="placeViewCommand" class="com.koreait.baraON.command.place.PlaceViewCommand" />
+	<beans:bean id="placeInsertCommand" class="com.koreait.baraON.command.place.PlaceInsertCommand" />
+	<beans:bean id="placeUpdatePageCommand" class="com.koreait.baraON.command.place.PlaceUpdatePageCommand" />
+	<beans:bean id="placeUpdateCommand" class="com.koreait.baraON.command.place.PlaceUpdateCommand" />
+	<beans:bean id="placeDeleteCommand" class="com.koreait.baraON.command.place.PlaceDeleteCommand" />
+	<beans:bean id="placeFullDeleteCommand" class="com.koreait.baraON.command.place.PlaceFullDeleteCommand" />
+	<beans:bean id="placeSearchCommand" class="com.koreait.baraON.command.place.PlaceSearchCommand" />
+	
+	<!-- placeOption command -->
+	<beans:bean id="optionDeleteCommand" class="com.koreait.baraON.command.option.OptionDeleteCommand" />
+	<beans:bean id="optionUpdateCommand" class="com.koreait.baraON.command.option.OptionUpdateCommand" />
+	<beans:bean id="optionInsertCommand" class="com.koreait.baraON.command.option.OptionInsertCommand" />
+	
+	<!-- review command -->
+	<beans:bean id="reviewUpdateCommand" class="com.koreait.baraON.command.review.ReviewUpdateCommand" />
+	<beans:bean id="reviewDeleteCommand" class="com.koreait.baraON.command.review.ReviewDeleteCommand" />
+	<beans:bean id="reviewInsertCommand" class="com.koreait.baraON.command.review.ReviewInsertCommand" />
+	<beans:bean id="reviewListAppendCommand" class="com.koreait.baraON.command.review.ReviewListAppendCommand" />
+	
+	<!-- reservation command -->
+	<beans:bean id="reservationUpdateCommand" class="com.koreait.baraON.command.reservation.ReservationUpdateCommand" />
+	<beans:bean id="reservationPageCommand" class="com.koreait.baraON.command.reservation.ReservationPageCommand" />
+	<beans:bean id="stateChangeCommand" class="com.koreait.baraON.command.reservation.StateChangeCommand" />
+	<beans:bean id="stateCancleCommand" class="com.koreait.baraON.command.reservation.StateCancleCommand" />
+	
+	<context:component-scan base-package="com.koreait.baraON" />
+	
+	<!-- board -->
+	<beans:bean id="noticeListCommand" class="com.koreait.baraON.command.board.NoticeListCommand" />
+	<beans:bean id="noticeViewCommand" class="com.koreait.baraON.command.board.NoticeViewCommand" />
+	<beans:bean id="faqListCommand" class="com.koreait.baraON.command.board.FAQListCommand" />
+	<beans:bean id="faqViewCommand" class="com.koreait.baraON.command.board.FAQViewCommand" />
+	<beans:bean id="eventListCommand" class="com.koreait.baraON.command.board.EventListCommand" />
+	<beans:bean id="eventViewCommand" class="com.koreait.baraON.command.board.EventViewCommand" />
+	
+	<!-- admin -->
+	<beans:bean id="adminNoticeListCommand" class="com.koreait.baraON.command.admin.AdminNoticeListCommand" />
+	<beans:bean id="adminNoticeViewCommand" class="com.koreait.baraON.command.admin.AdminNoticeViewCommand" />
+	<beans:bean id="noticeInsertCommand" class="com.koreait.baraON.command.board.NoticeInsertCommand" />
+	<beans:bean id="noticeDeleteCommand" class="com.koreait.baraON.command.board.NoticeDeleteCommand" />
+	<beans:bean id="noticeUpdateCommand" class="com.koreait.baraON.command.board.NoticeUpdateCommand" />
+	
+	<beans:bean id="adminFaqListCommand" class="com.koreait.baraON.command.admin.AdminFAQListCommand" />
+	<beans:bean id="adminFaqViewCommand" class="com.koreait.baraON.command.admin.AdminFAQViewCommand" />
+	<beans:bean id="faqInsertCommand" class="com.koreait.baraON.command.board.FAQInsertCommand" />
+	<beans:bean id="faqDeleteCommand" class="com.koreait.baraON.command.board.FAQDeleteCommand" />
+	<beans:bean id="faqUpdateCommand" class="com.koreait.baraON.command.board.FAQUpdateCommand" />
+	
+	<beans:bean id="adminEventListCommand" class="com.koreait.baraON.command.admin.AdminEventListCommand" />
+	<beans:bean id="adminEventViewCommand" class="com.koreait.baraON.command.admin.AdminEventViewCommand" />
+	<beans:bean id="eventInsertCommand" class="com.koreait.baraON.command.board.EventInsertCommand" />
+	<beans:bean id="eventDeleteCommand" class="com.koreait.baraON.command.board.EventDeleteCommand" />
+	<beans:bean id="eventUpdateCommand" class="com.koreait.baraON.command.board.EventUpdateCommand" />
+	
+	<beans:bean id="adminMemberListCommand" class="com.koreait.baraON.command.admin.AdminMemberListCommand" />
+	<beans:bean id="adminMemberViewCommand" class="com.koreait.baraON.command.admin.AdminMemberViewCommand" />
+	<beans:bean id="adminMemberDeleteCommand" class="com.koreait.baraON.command.admin.AdminMemberDeleteCommand" />
+	<beans:bean id="adminMemberUpdateCommand" class="com.koreait.baraON.command.admin.AdminMemberUpdateCommand" />
+
+	<beans:bean id="adminSellerListCommand" class="com.koreait.baraON.command.admin.AdminSellerListCommand" />
+	<beans:bean id="adminSellerViewCommand" class="com.koreait.baraON.command.admin.AdminSellerViewCommand" />
+	<beans:bean id="adminSellerrDeleteCommand" class="com.koreait.baraON.command.admin.AdminSellerDeleteCommand" />
+	<beans:bean id="adminSellerUpdateCommand" class="com.koreait.baraON.command.admin.AdminSellerUpdateCommand" />
+	
+	<beans:bean id="adminReplyListCommand" class="com.koreait.baraON.command.admin.AdminReplyListCommand" />
+	<beans:bean id="adminReplyDeleteCommand" class="com.koreait.baraON.command.admin.AdminReplyDeleteCommand" />
+
+	<beans:bean id="adminReviewListCommand" class="com.koreait.baraON.command.admin.AdminReviewListCommand" />
+	<beans:bean id="adminReviewDeleteCommand" class="com.koreait.baraON.command.admin.AdminReviewDeleteCommand" />
+	
+	<beans:bean id="adminConfirmListCommand" class="com.koreait.baraON.command.admin.AdminConfirmListCommand" />
+	<beans:bean id="adminConfirmViewCommand" class="com.koreait.baraON.command.admin.AdminConfirmViewCommand" />
+	<beans:bean id="adminConfirmUpdateCommand" class="com.koreait.baraON.command.admin.AdminConfirmUpdateCommand" />
+	
+	<!-- club -->
+	<beans:bean id="clubListCommand" class="com.koreait.baraON.command.club.ClubListCommand" />
+	<beans:bean id="clubInsertCommand" class="com.koreait.baraON.command.club.ClubInsertCommand" />
+	<beans:bean id="clubViewCommand" class="com.koreait.baraON.command.club.ClubViewCommand" />
+	<beans:bean id="clubUpdateCommand" class="com.koreait.baraON.command.club.ClubUpdateCommand" />
+	<beans:bean id="clubDeleteCommand" class="com.koreait.baraON.command.club.ClubDeleteCommand" />
+	<beans:bean id="joinClubCommand" class="com.koreait.baraON.command.club.JoinClubCommand" />
+	<beans:bean id="chkOutClubCommand" class="com.koreait.baraON.command.club.ChkOutClubCommand" />
+	<beans:bean id="likeClubCommand" class="com.koreait.baraON.command.club.LikeClubCommand" />
+	<beans:bean id="unLikeClubCommand" class="com.koreait.baraON.command.club.UnLikeClubCommand" />
+	
+	<beans:bean id="instanceClubListCommand" class="com.koreait.baraON.command.club.InstanceClubListCommand" />
+	<beans:bean id="instanceClubInsertCommand" class="com.koreait.baraON.command.club.InstanceClubInsertCommand" />
+	<beans:bean id="instanceClubViewCommand" class="com.koreait.baraON.command.club.InstanceClubViewCommand" />
+	<beans:bean id="instanceClubUpdateCommand" class="com.koreait.baraON.command.club.InstanceClubUpdateCommand" />
+	<beans:bean id="instanceClubDeleteCommand" class="com.koreait.baraON.command.club.InstanceClubDeleteCommand" />
+	<beans:bean id="instanceJoinClubCommand" class="com.koreait.baraON.command.club.InstanceJoinClubCommand" />
+	<beans:bean id="instanceChkOutClubCommand" class="com.koreait.baraON.command.club.InstanceChkOutClubCommand" />
+	<beans:bean id="instanceLikeClubCommand" class="com.koreait.baraON.command.club.InstanceLikeClubCommand" />
+	<beans:bean id="instanceUnLikeClubCommand" class="com.koreait.baraON.command.club.InstanceUnLikeClubCommand" />
+	
+
+	<!-- login -->
+	<beans:bean id="loginCommand" class="com.koreait.baraON.command.member.LoginCommand" />	
+	<beans:bean id="kakaoLoginCommand" class="com.koreait.baraON.command.member.KakaoLoginCommand" />	
+	<beans:bean id="logoutCommand" class="com.koreait.baraON.command.member.LogoutCommand" />	
+	<beans:bean id="chkIdCommand" class="com.koreait.baraON.command.member.ChkIdCommand" />	
+	<beans:bean id="findIdCommand" class="com.koreait.baraON.command.member.FindIdCommand" />	
+	<beans:bean id="findPwCommand" class="com.koreait.baraON.command.member.FindPwCommand" />	
+	<beans:bean id="emailAuthCommmand" class="com.koreait.baraON.command.member.EmailAuthCommmand" />	
+	<beans:bean id="changePwCommand" class="com.koreait.baraON.command.member.ChangePwCommand" />	
+	<beans:bean id="kakaoAPI" class="com.koreait.baraON.command.member.KakaoAPI" />	
+
+	<!-- join -->
+	<beans:bean id="memberJoin2Command" class="com.koreait.baraON.command.member.MemberJoin2Command"/>
+	<beans:bean id="memberSearchCommand" class="com.koreait.baraON.command.member.MemberSearchCommand"/>
+	<beans:bean id="memberNickSearchCommand" class="com.koreait.baraON.command.member.MemberNickSearchCommand"/>
+	<beans:bean id="memberPhoneSearchCommand" class="com.koreait.baraON.command.member.MemberPhoneSearchCommand"/>
+	<beans:bean id="memberEmailSearchCommand" class="com.koreait.baraON.command.member.MemberEmailSearchCommand"/>
+	<beans:bean id="emailAuthCommand2" class="com.koreait.baraON.command.member.EmailAuthCommand2"/>
+	<beans:bean id="memberPwSearchCommand" class="com.koreait.baraON.command.member.MemberPwSearchCommand"/>
+	<beans:bean id="memberInsertCommand" class="com.koreait.baraON.command.member.MemberInsertCommand"/>
+	<beans:bean id="memberPwUpdateCommand" class="com.koreait.baraON.command.member.MemberPwUpdateCommand"/>
+	<beans:bean id="memberNickUpdateCommand" class="com.koreait.baraON.command.member.MemberNickUpdateCommand"/>
+	<beans:bean id="memberUpdateCommand" class="com.koreait.baraON.command.member.MemberUpdateCommand"/>
+	
+	<!-- seller -->
+	<beans:bean id="spaceViewPageCommand" class="com.koreait.baraON.command.seller.SpaceViewPageCommand"/>
+	<beans:bean id="sellerPhoneSearchCommand" class="com.koreait.baraON.command.seller.SellerPhoneSearchCommand"/>
+	<beans:bean id="sellerEmailSearchCommand" class="com.koreait.baraON.command.seller.SellerEmailSearchCommand"/>
+	<beans:bean id="sellerInsertCommand" class="com.koreait.baraON.command.seller.SellerInsertCommand"/>
+	<beans:bean id="allPlaceSearchCommand" class="com.koreait.baraON.command.seller.AllPlaceSearchCommand"/>
+	<beans:bean id="allPlaceSearch2Command" class="com.koreait.baraON.command.seller.AllPlaceSearch2Command"/>
+	<beans:bean id="placeCaSearchCommand" class="com.koreait.baraON.command.seller.PlaceCaSearchCommand"/>
+	<beans:bean id="placeCaSearch2Command" class="com.koreait.baraON.command.seller.PlaceCaSearch2Command"/>
+	<beans:bean id="sellerPwSearchCommand" class="com.koreait.baraON.command.seller.SellerPwSearchCommand"/>
+	<beans:bean id="sellerPwUpdateCommand" class="com.koreait.baraON.command.seller.SellerPwUpdateCommand"/>
+	<beans:bean id="sellerUpdateCommand" class="com.koreait.baraON.command.seller.SellerUpdateCommand"/>
+	<beans:bean id="placeAdminListCommand" class="com.koreait.baraON.command.seller.PlaceAdminListCommand"/>
+	<beans:bean id="reservationListCommand" class="com.koreait.baraON.command.seller.ReservationListCommand"/>
+	<beans:bean id="sellerSearchCommand" class="com.koreait.baraON.command.seller.SellerSearchCommand"/>
+	<beans:bean id="sellerEmailAuthCommand" class="com.koreait.baraON.command.seller.SellerEmailAuthCommand"/>
+		
+	<!-- myPage -->
+	<beans:bean id="wishListCommand" class="com.koreait.baraON.command.myPage.WishListCommand" />	
+	<beans:bean id="wishDeleteCommand" class="com.koreait.baraON.command.myPage.WishDeleteCommand" />	
+	<beans:bean id="regularClubCommand" class="com.koreait.baraON.command.myPage.RegularClubCommand" />	
+	<beans:bean id="instantClubCommand" class="com.koreait.baraON.command.myPage.InstantClubCommand" />	
+	<beans:bean id="clubListDeleteCommand" class="com.koreait.baraON.command.myPage.ClubListDeleteCommand" />	
+	<beans:bean id="deletePwCheck" class="com.koreait.baraON.command.myPage.DeletePwCheck" />	
+	<beans:bean id="infoDeleteCommand" class="com.koreait.baraON.command.myPage.InfoDeleteCommand" />	
+	<beans:bean id="clubManageListCommand" class="com.koreait.baraON.command.myPage.ClubManageListCommand" />	
+	<beans:bean id="clubCountCommand" class="com.koreait.baraON.command.myPage.ClubCountCommand" />	
+	<beans:bean id="clubManageDetailCommand" class="com.koreait.baraON.command.myPage.ClubManageDetailCommand" />	
+	<beans:bean id="addCardCommand" class="com.koreait.baraON.command.myPage.AddCardCommand" />	
+	<beans:bean id="clubReservationListCommand" class="com.koreait.baraON.command.myPage.ClubReservationListCommand" />	
+	
+	<beans:bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"> <!-- Impl:class ////Impl앞은 인터페이스 -->
+		<beans:property name="host" value="smtp.gmail.com"/>
+		<beans:property name="port" value="587"/>
+		<beans:property name="username" value="jaepppi@gmail.com"/>
+		<beans:property name="password" value="Wogur702600"/>
+		<beans:property name="javaMailProperties">
+			<beans:props>
+				<beans:prop key="mail.smtp.auth">true</beans:prop>
+				<beans:prop key="mail.smtp.starttls.enable">true</beans:prop>
+			</beans:props>
+		</beans:property>
+	</beans:bean>
+</beans:beans>

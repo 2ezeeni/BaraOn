@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.baraON.dao.SellerDao">
+
+	<select id="sellerPwSearch" parameterType="int" resultType="String">
+		SELECT S_PW
+		FROM SELLER
+		WHERE S_NO= #{s_no}
+	</select>
+
+	<update id="sellerPwUpdate"  parameterType="com.koreait.baraON.dto.SellerDto">
+		UPDATE SELLER
+		SET S_PW=#{s_pw}
+		WHERE S_NO = #{s_no}
+	</update>
+
+	<update id="sellerUpdate"  parameterType="com.koreait.baraON.dto.SellerDto">
+		UPDATE SELLER
+		SET S_PHONE=#{s_phone},
+			S_EMAIL=#{s_email}
+		WHERE S_NO = #{s_no}
+	</update>
+	
+	<select id="sellerSearch" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+		FROM SELLER
+		WHERE S_ID= #{s_id}
+	</select>
+	
+	<select id="reviewSearch" parameterType="com.koreait.baraON.dto.ReviewDto" resultType="com.koreait.baraON.dto.ReviewDto">
+		SELECT COUNT(*)
+		FROM SELLER
+		WHERE S_NO= #{s_no}
+	</select>
+
+	<select id="sellerPhoneSearch" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+		FROM SELLER
+		WHERE S_PHONE= #{s_phone}
+	</select>
+	
+	<select id="sellerEmailSearch" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+		FROM SELLER
+		WHERE S_EMAIL= #{s_email}
+	</select>
+
+	<insert id="sellerInsert" parameterType="com.koreait.baraON.dto.SellerDto">
+		INSERT INTO
+		SELLER (S_NO, S_ID, S_PW, S_PHONE, S_NAME, S_BIRTH, S_EMAIL, S_REGDATE, S_AGREEMENT, S_COMPANYNO)
+		VALUES (SELLER_SEQ.NEXTVAL, #{s_id}, #{s_pw}, #{s_phone}, #{s_name}, #{s_birth}, #{s_email}, SYSDATE, #{s_agreement}, #{s_companyNo} )
+	</insert>
+
+</mapper>

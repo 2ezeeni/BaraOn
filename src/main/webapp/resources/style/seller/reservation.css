@@ -1,0 +1,31 @@
+@charset "UTF-8";
+* {
+	padding: 0px;
+	margin: 0px;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+ul, ol {
+	list-style-type: none;
+}
+table {
+	border-collapse: collapse;
+}
+div {
+	box-sizing: border-box;
+}
+
+.box{
+		display: inline-flex;
+}
+th,td{
+	width: 200px;
+	height: 50px;
+	text-align: center;
+}
+#paging{
+	display:flex;
+	text-align :center;
+}

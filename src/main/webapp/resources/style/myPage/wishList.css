@@ -1,0 +1,89 @@
+@charset "UTF-8";
+/* 초기화 */
+* {
+	padding: 0px;
+	margin: 0px;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+ul, ol {
+	list-style-type: none;
+}
+table {
+	border-collapse: collapse;
+}
+div {
+	box-sizing: border-box;
+}
+
+.member-category:nth-of-type(1) li:nth-of-type(2) > a {
+	color: cadetblue;
+}
+.emptyList {
+	width: 400px;
+	height: 200px;
+	text-align: center;
+	margin: 40px auto;
+}
+.emptyList > div:last-of-type {
+	font-weight: bold;
+	margin-top: 26px;
+	padding: 0 0 0 15px;
+}
+.fa-exclamation-circle:before {
+	font-size: 90px;
+	color: cadetblue;	
+}
+
+.club-wrap {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 48%);
+	gap: 11px; 
+	text-align: center;
+	margin-top: 5%; 
+}
+.clubList {
+	position: relative;
+}
+
+.titleANdContent {
+	position: absolute;
+	top: 59%;
+	margin: 0 6%;
+	z-index: 1;
+}
+.titleANdContent .title {
+	text-align: left;
+		
+}
+.titleANdContent .title  a {
+	color: #FFFFFF;
+	font-size: 35px;
+	font-weight: bold;
+}
+.titleANdContent .content  a {
+	width: 238px;
+	color: #FFFFFF;
+	text-align: left;
+	font-size: 15px;
+	font-weight: bold;
+}
+.wish-btn {
+	position: relative;
+	left: 184px;
+	bottom: 282px;
+}
+.clubList .wishIcon {
+	position: absolute;
+	color: #1DD1AD;
+	font-size: 50px;
+	transform: translate(-50%, -50%);
+}
+.clubImage > a > img {
+	position: relative;
+	width: 100%;
+	filter: brightness(70%);
+
+}

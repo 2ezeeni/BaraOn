@@ -1,0 +1,53 @@
+@charset "UTF-8";
+/* 초기화 */
+* {
+	padding: 0px;
+	margin: 0px;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+ul, ol {
+	list-style-type: none;
+}
+table {
+	border-collapse: collapse;
+}
+div {
+	box-sizing: border-box;
+}
+
+.btn selected {
+	color: red;
+}
+.mypage-body {
+	display: flex;
+	width: 1200px;
+	margin: 54px auto;
+}
+.mypage-category {
+	margin: 0 2% 2% 3%;
+}
+.mypage-category a {
+	display: block;
+}
+.mypage-category h2 {
+	margin-bottom: 10px;
+}
+.mypage-contents {
+	position: relative;
+	right: -10%;
+	width: 79%;
+	margin: 21px 0 4% 0;
+}
+.mypage-contents > h2 {
+	margin-bottom: 12px;
+}
+.mypage-contents .top {
+	height: 3px;
+	background: #dbdbdb;
+	border: 1px solid #dbdbdb;
+	border-radius: 3px;
+	margin-bottom: 15px;
+}

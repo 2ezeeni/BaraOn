@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.koreait.baraON.dao.AdminMemberDao">
+
+	<select id="adminMemberList" resultType="com.koreait.baraON.dto.AdminMemberDto">
+		SELECT B.*
+		  FROM (SELECT A.*, ROWNUM AS RN
+		          FROM (SELECT *
+		                  FROM MEMBER
+		              ORDER BY M_NO DESC) A) B
+		 WHERE B.RN BETWEEN #{param1} AND #{param2}
+	</select>
+	
+	<select id="memberCount" resultType="int">
+		SELECT COUNT(*)
+		FROM MEMBER
+	</select>
+	
+	<select id="adminMemberView" parameterType="int" resultType="com.koreait.baraON.dto.AdminMemberDto2">
+		SELECT *
+		  FROM MEMBER
+		 WHERE M_NO = #{m_no}
+	</select>
+	
+	<delete id="adminMemberDelete" parameterType="int">
+		DELETE
+		  FROM MEMBER
+		 WHERE M_NO = #{m_no}
+	</delete>
+	
+	<update id="adminMemberUpdate" parameterType="com.koreait.baraON.dto.AdminMemberDto2">
+		UPDATE MEMBER
+		   SET M_NAME = #{m_name,jdbcType=VARCHAR},
+		       M_PW = #{m_pw,jdbcType=VARCHAR},
+		       M_PHONE = #{m_phone,jdbcType=VARCHAR}
+		 WHERE M_NO = #{m_no,jdbcType=INTEGER}
+	</update>
+</mapper>

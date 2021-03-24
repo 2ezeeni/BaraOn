@@ -1,0 +1,96 @@
+@charset "UTF-8";
+/* 초기화 */
+* {
+	padding: 0px;
+	margin: 0px;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+ul, ol {
+	list-style-type: none;
+}
+table {
+	border-collapse: collapse;
+}
+div {
+	box-sizing: border-box;
+}
+
+.member-category:nth-of-type(2) li:nth-of-type(1) > a {
+	color: cadetblue;
+}
+.state {
+	display: flex;
+	height: 28px;
+	line-height: 28px;
+}
+.state a {
+	margin:10px 10px 10px 0;
+	font-size: 20px;
+	font-weight: bold;
+}
+.emptyList {
+	width: 400px;
+	height: 200px;
+	text-align: center;
+	margin: 40px auto;
+}
+.emptyList > div:last-of-type {
+	font-weight: bold;
+	margin-top: 26px;
+	padding: 0 0 0 15px;
+}
+.fa-exclamation-circle:before {
+	font-size: 90px;
+	color: cadetblue;	
+}
+.clubList {
+	display: flex;
+	height: 160px;
+	margin: 35px 0;
+}
+.clubImage {
+	width: 268px;
+	height: 180px;
+	margin-right: 18px;
+}
+.clubImage > a > img {
+	width: 100%;
+}
+.clubContent {
+	width: 30%;
+}
+.part {
+	font-size: 22px;
+	color: cadetblue;
+}
+.clubContent > .title {
+	font-size: 26px;
+	font-weight: 600;
+}
+.clubContent > .startDate {
+	font-weight: 600;
+	margin-top: 10px;
+}
+.clubContent > .min {
+	margin-top: 25px;	
+}
+.min, .max, .count {
+	font-size: 13px;
+}
+.clubList > .detailBtn {
+	margin: 123px 0 0 35px;
+	
+}
+.detailBtn > form button {
+	width: 85px;
+	height: 38px;
+	background: cadetblue;
+	color: white;
+	border: 1px solid cadetblue;
+	border-radius: 32px;
+	font-size: 17px;
+	font-weight: 600;
+}

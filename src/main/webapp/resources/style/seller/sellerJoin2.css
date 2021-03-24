@@ -1,0 +1,78 @@
+@charset "UTF-8";
+.box{
+	height: 1200px;
+	text-align:center;
+}
+#s_id{
+	width : 400px; 
+	height : 50px; 
+	font-size : 15px;
+}
+#s_pw{
+	width : 400px; 
+	height : 50px; 
+	font-size : 15px;
+}
+#s_pw2{
+	width : 400px; 
+	height : 50px; 
+	font-size : 15px;
+}
+#s_phone{
+	width : 400px; 
+	height : 50px; 
+	font-size : 15px;
+}
+#s_name{
+	width : 400px; 
+	height : 50px; 
+	font-size : 15px;
+}
+#s_birth{
+	width : 400px; 
+	height : 50px; 
+	font-size : 15px;
+}
+#s_email2{
+	width : 400px; 
+	height : 50px; 
+	font-size : 15px;
+}
+#emailAuth2{
+	width : 400px; 
+	height : 50px; 
+	font-size : 15px;
+	background:cadetblue;
+	color:white;
+}
+#s_companyNo{
+	width : 400px; 
+	height : 50px; 
+	font-size : 15px;
+}
+#s_email{
+	width : 200px; 
+	height : 50px; 
+	font-size : 15px;
+}
+#s_email2{
+	width : 400px; 
+	height : 50px; 
+	font-size : 15px;
+}
+
+#emailAuth1{
+	width : 200px; 
+	height : 50px; 
+	font-size : 15px;
+	background:cadetblue;
+	color:white;
+}
+#btn{
+	width : 400px; 
+	height : 50px; 
+	font-size : 15px;
+	background:cadetblue;
+	color:white;
+}
+
